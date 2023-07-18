@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Introduction to Scientific Computing: Part I</title>
+
+    <!--- Mathjax support --->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../main.css" />
+    <!---<link rel="shortcut icon" href="https://mako.cc/favicon.ico" />--->
+  </head>
+
+  <body>
+    <h2>Introduction to Scientific Computing: Part I</h2>
+    <a href="../../index.html">Home</a> |  <a href="getting_started_linux_2023_07_18.html">previous</a> | next<br>
+    <hr>
+
+      <h4>Introduction</h4>
+
+        <p>As a physics student, computation exists at the heart of what I do. Simulating physical processes as well as mathematical models is one forte of physical and mathematical sciences, which is both fun and worth learning. This article, I will focus on the preliminaries of scientific computing &#8212; getting started with the software to install and configure.</p>
+        
+    <hr>
+
+      <h4 id="A">A) Programming Languages</h4>
+
+        <p>While you can use any of the programming languages, especially when it comes to scientific computing, C, C++, Fortran, Python, and Julia are preferred. Moreover, it is easier to configure and run applications in UNIX based operating systems, so I'll write about configuring your Linux system for scientific computing. Since I use Ubuntu 22.04 currently, I'll address all commands to this system.</p>
+        <p>
+        <b>i. C, C++, and Fortran</b> <br>
+          C, C++, and Fortran are compiled languages. To install the compiler (GNU compiler collections) and the gnu debugger, you can use the following commands. <br>
+          <code>
+          % sudo apt install gcc g++ gfortran gdb <br>
+          </code>
+          Moreover, gnuplot is widely used for creating scientific plots and can be installed using <br>
+          <code>
+          % sudo apt install gnuplot <br>
+          </code>
+          You'll also need a text editor to write programs. While the default text editor in Ubuntu 22.04, <em>gedit</em> works fine, you might want to use <em>vim</em>, <em>emacs</em>, or <em>Visual Studio Code</em>. You can install these using the following commands. <br>
+          <code>
+          % sudo apt install vim emacs <br>
+          </code>
+          <code>
+          % sudo snap install code --classic <br>
+          </code>
+          </p>
+
+          <p>
+        <b>ii. Python</b> <br>
+          Python is preinstalled in ubuntu, so you only need to install the libraries that you require. numpy, scipy, astropy, pandas, sympy, and matplotlib are popular libraries that you will use frequently for scientific computing. Moreover, jupyter notebooks are popular among scientists. You can install them from the ubuntu repositories using <br>
+          <code>
+          % sudo apt install python3-numpy python3-scipy python3-astropy python3-pandas python3-sympy python3-matplotlib ipython3 jupyter jupyter-notebook<br>
+          </code>
+          While you can also use pip to install the python packages, I would suggest not to use <code>sudo pip</code> to install them. Rather, <code>pip install --user</code> or a virtual environment will be a good option. <br>
+          For some users, who don't have administrator access, or in general for easier installation, Anaconda distribution of python will be a good option. Besides, miniconda (a mini python version, which does not have all the scientific libraries in Anaconda), or mambaforge (uses mamba as a package manager instead of conda) will be better if you want to install the packages yourself. Download the <code>python_installer.sh</code> (note that this is a dummy script name, you can go to the respective downloads page to download the scripts) script and open terminal and run the following: <br>
+          <code>
+          % bash python_installer.sh <br>
+          </code>
+          Agree through the terms and conditions, and change (or keep default) the installation directories to install the Anaconda/miniconda/mambaforge python distributions. Then, you can install the packages as using conda or mamba. Since I use mambaforge, I'll write the command using mamba. <br>
+          <code>
+          % mamba install numpy scipy astropy pandas sympy matplotlib ipython jupyter notebook jupyterlab <br>
+          </code>
+          </p>
+          <p>
+        <b>iii. Julia</b> <br>
+        Julia is availabe as a snap on Ubuntu. However, I recommend installing the generic binaries for your system using the Julia downloads page. This method also works if you want multiple versions of Julia installed. The installation instructions are in the Julia downloads page. To install packages, you can use the commands below: <br>
+        <code>
+        % julia <br>
+        julia> ] <br>
+        (v&lt;julia version&gt;) pkg> add package_name
+        </code>
+        </p>
+        
+        <hr>
+      <h4 id="B">B) Other Software</h4>
+      
+      <p>Besides the above programming languages, other languages and softwares are essential to the workflow when doing scientific computing. One of the important tools is LaTeX, which is widely used in academia for publishing scientific documents. You will need a LaTeX distribution, and Ubuntu has texlive in its repositories. Along with, you need a LaTeX editor, I install both TeXstudio and Setzer, and use whichever suitable. LyX is a document processor, which does not need any experience with LaTeX, thus can be helpful if you want formatted documents without any hassle of using LaTeX. Pandoc will also be useful if you want to convert from one document format to another. You can install these tools using the command below. <br>
+        <code>
+        % sudo apt install texlive-full texstudio lyx pandoc
+        </code>
+      </p>
+      
+      <p>For graphics and making diagrams, gimp and inkscape will come handy. You can install them with the command <br>
+        <code>
+        % sudo apt install gimp inkscape
+        </code>
+      </p>
+      
+      <p>For astronomy enthusiasts, Kstars, Stellarium, Siril, and DS9 are available in the repositories. Qalculate! is a feature rich calculator for your system, and I definitely recommend to install it. If you don't want to write codes and simply want to analyze data, LabPlot by KDE can be used. Other scientific applications like GNU Octave, Scilab, Paraview, Quantum Espresso, GNU Data Language, IRAF, and R can also be installed in the system using similar commands or the binaries provided by the software managers.</p>
+      
+    <p>This article went through a brief overview of softwares used in science. Next part, we'll go into details of some of the tools mentioned here. Happy computing!</p>
+    <hr>
+    <a href="../../index.html">Home</a> |  <a href="getting_started_linux_2023_07_18.html">previous</a> | next<br>
+    <hr>
+    Copyright &#169; <a href="mailto:jagatkafle72@gmail.com">Jagat Kafle</a>
+    
+  </body>
+</html>

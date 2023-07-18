@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting started with Linux</title>
+
+    <!--- Mathjax support --->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../main.css" />
+    <!---<link rel="shortcut icon" href="https://mako.cc/favicon.ico" />--->
+  </head>
+
+  <body>
+    <h2>Getting started with Linux</h2>
+    <a href="../../index.html">Home</a> | previous | <a href="intro_scientific_computing_2023_07_18.html">next</a><br>
+    <hr>
+
+      <h4>Why Linux?</h4>
+
+        <p>The first question that arises is: why Linux? It might not be for everyone. In my experience of five years of using Linux, if you are a scientist, who will work with the command line tools as well as scientific software, then it will be easier for you to get on with your work in *NIX devices. This post is not going to be a motivation for you to just get switched to Linux, however, I will try to cover the basic ideas on how you can get started to it. The open-source model, free as in freedom, large availability and compatibility of science software and the ease of use are some reasons to why I use Linux.
+
+    <hr>
+      <h4 id="A">A) Choosing a Linux distribution</h4>
+      <p>To get your system running, you need to choose the operating system. Since the Linux kernel is open source, several operating systems are created off the kernel and a package management system. These operating systems are called Linux distributions. A package management system is a collection of software tool to automate installing and uninstalling, configuring the computer programs, by making use of packages, which contain the programs and associated metadata in some archive format. Most popular distributions include Ubuntu, Fedora, Debian, OpenSUSE, Arch Linux, and Gentoo. I have used Ubuntu and Fedora for quite a long time, and have tested Debian, OpenSUSE and Arch Linux. Some popular package management engines are apt (Debian, Ubuntu, and its derivatives), dnf (Fedora, Red Hat Enterprise Linux), zypper (OpenSUSE), pacman (Arch Linux), and portage (Gentoo). The differences in these systems comes from how the packages are handled. Ubuntu, Debian, Fedora, and OpenSUSE are easier to install and use, while Arch Linux and Gentoo might take a toil. For a beginner, Ubuntu (and its derivatives like Linux Mint) or Fedora might be the optimal choice.</p>
+    <hr>
+    
+      <h4 id="B">B) How to install?</h4>
+
+        <p>Installing Linux is not going to be a arduous task as it is made out to be, if you just want to get if up and running, or unless you want to dive into Arch or Gentoo first. As above, my suggestion would be to start with Ubuntu or Fedora. You can try these distributions in your virtual machine or your physical device since they offer a live desktop environment (yes, you don't need to install it to just use Linux). Go to the download page of <a href="https://ubuntu.com/download">Ubuntu</a> or <a href="https://fedoraproject.org/workstation/">Fedora</a> to grab the iso file. Using a disk image creator (like rufus), you can burn the iso into a usb drive. Insert the usb drive and go into the boot device list when you power on your computer, you should be able to see the bootable usb drive. Choose that and you'll be provided with the live environment option. This should help you get started with the installation process. If any issues arise, several documentations and tutorials already exist out there in the internet, which can be of help.</p>
+        
+      <h4 id="C">C) Post Installation</h4>
+      
+      <p>While the bare installation of Ubuntu and Fedora are sufficient to keep you up and running, you might want to tweak it to your need. I'll write the basic set up that I usually do in Ubuntu to have software to my need in these systems. I'll use the <code>%</code> to write out the command line.</p>
+      
+      <b>Ubuntu</b><br>
+      Ubuntu comes with two kinds of packages: <em>.deb</em> and <em>.snap</em>. <em>.deb</em> are the traditional packages that can be installed using the package manager apt and <em>.snap</em> packages can be installed using the packager snap. When you reboot your system after installation, you can then start tweaking up to your need. The terminal can be launched with the command <code>Ctrl+Alt+T</code>. Firstly, update your system using the following commands in the command line. <br>
+      <code>
+        % sudo apt update && sudo apt upgrade <br>
+        % sudo snap refresh <br>
+      </code>
+      Flatpak is another package management system that is not installed by default in Ubuntu, however, if you want to use it, install and configure using the following command. <br>
+      <code>
+        % sudo apt install flatpak <br>
+      </code>
+      To install applications from the Flathub repository, use the command below. <br>
+      <code>
+        % flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo <br>
+      </code>
+      After this, I install software to my needs. Since, I use LaTeX or markdown for most of my writings, I install the texlive distribution and the LaTeX editor TeXstudio using the command, <br>
+      <code>
+      % sudo apt install texlive-full texstudio <br>
+      </code>
+      A major advantage of using these package managers is they handle dependencies, so for your application to run, the required dependencies are automatically installed.
+      If you want to compile programs written in C, C++, and Fortran language, the following command installs the GNU compilers as well as the build tools. <br>
+      <code>
+      % sudo apt install gcc git make cmake build-essential g++ gfortran gdb gsl-bin <br>
+      </code>
+      Some other software I install are inkscape, gimp, qalculate, labplot, and GNU octave. Using snap, I install the browsers as they are sandboxed. Since firefox is installed by default in Ubuntu, I install chromium as a secondary browser. <br>
+      <code>
+      % sudo snap install chromium <br>
+      </code>
+      The default Ubuntu desktop uses the customized GNOME desktop environment, so I install some gtk apps using flatpak: Amberol (music player), Gnome Web (browser), Video Downloader (download music and videos), and Wike (wikipedia reader). <br>
+    
+    Fedora uses dnf instead of apt to manage the packages, and Flatpak is installed by default, while snap is not. For installation of codecs and libraries for audio management, you will need to enable the rpm-fusion repositories in Fedora, unlike ubuntu, which installs them by default.
+    <hr>
+    <h4>Conclusion</h4>
+    While this article is not a complete dive into installation and use of linux, it should give you some idea on choosing a linux distribution, and configuring it towards your need. As always, the documentation of each distributions are of good help, as well as tutorials available in the internet can be helpful.
+    <hr>
+    <a href="../../index.html">Home</a> | previous | <a href="intro_scientific_computing_2023_07_18.html">next</a><br>
+    <hr>
+    Copyright &#169; <a href="mailto:jagatkafle72@gmail.com">Jagat Kafle</a>
+    
+  </body>
+</html>
