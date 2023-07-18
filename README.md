@@ -1,2 +1,1 @@
-# jakafle.github.io
-Personal site where I post occasionally
+Repository of my personal site.
