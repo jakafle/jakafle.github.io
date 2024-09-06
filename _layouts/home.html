@@ -1,0 +1,93 @@
+---
+layout: default
+---
+<main class="main">
+  <section class="flex flex-wrap mt4"> 
+    <div class="w-30-ns w-100 mw5-ns f5 m0"></div>
+    <div class="w-70-ns w-100 normal f5 m0">
+      <img src="/assets/images/myface.jpg" width="250px" /> 
+    </div>
+  </section>
+  <section class="flex flex-wrap mt4 mb4">
+    <h2 class="w-30-ns w-100 mw5-ns f5 mt0">Name</h2>
+    <h1 class="w-70-ns w-100 normal f5 mt0">Jagat Kafle</h1>
+  </section>
+  <section class="flex flex-wrap mt0 mb4">
+    <h2 class="w-30-ns w-100 mw5-ns f5 mt0">About</h2>
+    <div class="w-70-ns w-100 normal f5 mt0">
+      <p class="mt0">
+        This is my personal blog. I write about physics, math, technology, and
+        and open source.
+      </p>
+      <p>
+        I am currently a graduate student in physics at
+        <a href="https://www.brandeis.edu/physics/">Brandeis University</a> where I do research in astrophysics and fluid dynamics.
+      </p>
+    </div>
+  </section>
+  <section class="flex flex-wrap mt0 mb4">
+    <h2 class="w-30-ns w-100 mw5-ns f5 mt0">Contact</h2>
+    <div class="w-70-ns w-100 normal f5 mt0">
+      <div class="mb3">
+        {% include mail.svg %}
+        <div class="dib ml3">
+          Email: <br />
+          <a href="emailto:jagatk@proton.me">jagatk@proton.me</a><br/>
+        </div>
+      </div>
+
+     <!-- <div class="mb3">
+        {% include twitter.svg %}
+
+        <!-- <img src="assets/images/twitter.svg" class="mw2 dib" /> -->
+        <!--<div class="dib ml3">
+          Twitter: <br />
+          <a href="https://twitter.com/wuoulf">@wuoulf</a><br/>
+        </div>
+      </div>-->
+      <div class="mb3">
+        {% include gitlab.svg %}
+        <div class="dib ml3">
+          GitLab: <br />
+          <a href="https://gitlab.com/jakafle">@jakafle</a><br/>
+        </div>
+      </div>
+
+      <div class="mb3">
+        {% include github.svg %}
+        <div class="dib ml3">
+          GitHub: <br />
+          <a href="https://github.com/jakafle">@jakafle</a><br/>
+        </div>
+      </div>
+
+      <div class="">
+        {% include linkedin.svg %}
+        <div class="dib ml3">
+          LinkedIn: <br />
+          <a href="https://www.linkedin.com/in/jagatkafle/">jagatkafle</a><br/>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section class="flex flex-wrap mb4">
+    <h2 class="w-30-ns w-100 mw5-ns f5 mt0">Blog</h2>
+    <div class="w-70-ns w-100">
+      {% for post in site.posts %}
+        {% include post-list-item.html %}
+      {% endfor %}
+    </div>
+  </section>
+  <!--
+  <section class="flex flex-wrap mb4">
+    <h2 class="w-30-ns w-100 mw5-ns f5 mt0">Book</h2>
+    <div class="w-70-ns w-100">
+      {% for b in site.book %}
+        BOOK
+        {{ b.content }}
+      {% endfor %}
+    </div>
+  </section>
+  -->
+</main>

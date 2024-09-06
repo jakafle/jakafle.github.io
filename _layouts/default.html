@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" class="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ site.title }}{% if page.title and page.title != "" %} &mdash; {{ page.title }}{% endif %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,600,600i|IBM+Plex+Sans:400,400i,600,600i&display=swap" rel="stylesheet">
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans&display=swap" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s%N' }}">
+    <link rel="apple-touch-icon" href="{{ site.icon | absolute_url }}">
+
+    <meta name="theme-color" content="#000000">
+    <meta property="og:site_name" content="A 0xB106, Jagat Kafle">
+    {% if page.categories contains 'posts' %}
+      <meta property="og:type" content="article">
+    {% endif %}
+
+    {% if page.date %}
+      <meta property="article:published_time" content="{{ post.date | date_to_xmlschema }}">
+    {% endif %}
+
+    {% if page.title and page.title != '' %}
+      {% assign meta_title = " &mdash; Jagat Kafle &mdash; Blog" %}
+      <meta name="title" content="{{ page.title | append: meta_title }}" />
+      <meta property="og:title" content="{{ page.title | append: meta_title }}" />
+      <meta property="twitter:title" content="{{ page.title | append: meta_title }}" />
+    {% endif %}
+
+    {% if page.summary %}
+      <meta name="description" content="{{ page.summary }}">
+      <meta property="og:description" content="{{ page.summary }}">
+      <meta property="twitter:description" content="{{ page.summary }}">
+    {% else %}
+      <meta name="description" content="{{ site.description }}">
+      <meta property="og:description" content="{{ site.description }}">
+      <meta property="twitter:description" content="{{ site.description }}">
+    {% endif %}
+
+    {% if page.image %}
+      <meta name="twitter:card"  content="summary_large_image">
+      <meta property="og:image" content="{{ page.image | absolute_url}}">
+
+    {% else %}
+      <meta name="twitter:card"  content="summary">
+      <meta name="twitter:image" content="{{ site.title_image | absolute_url }}">
+    {% endif %}
+
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="al:web:url" content="{{page.url | absolute_url }}">
+
+    <!--meta property="article:author" content="https://twitter.com/@wuoulf">
+
+    <meta name="author" content="Wolf Vollprecht">
+    <meta name="twitter:creator" content="@wuoulf">
+    <meta name="twitter:site" content="@wuoulf"-->
+
+    {%- if jekyll.environment == 'production' -%}
+      <script>
+        (function() {
+          var script = document.createElement('script');
+          window.counter = 'https://jakafle_github_io.goatcounter.com/count'
+          script.async = 1;
+          script.src = '//gc.zgo.at/count.js';
+
+          var ins = document.getElementsByTagName('script')[0];
+          ins.parentNode.insertBefore(script, ins)
+        })();
+      </script>
+    {%- endif -%}
+
+  </head>
+  <body class="home-template sans-serif ma4 ma4-m ma5-ns mw9 lh-title">
+
+<!--
+    {% if page.layout == 'home' %}
+      <a href="#main" class="skip-navigation">
+        Skip to list of posts
+      </a>
+    {% else %}
+      <a href="#main" class="skip-navigation">
+        Skip to content
+      </a>
+    {% endif %}
+ -->
+
+    <div class="wrapper">
+        <header class="bb">
+            <div class="flex flex-wrap mb3">
+                <h2 class="w-30-ns mw5-ns f5 mv0 pr3 dn db-ns">Title</h2>
+                <h2 class="w-70-ns normal f5 mv0">{% include breadcrumb.html %}</h2>
+            </div>
+        </header>
+        <div class="switch-wrapper">
+          <span class="switcher switcher-1">
+             <input type="checkbox" id="darkmode_button">
+             <label for="switcher-1"></label>
+          </span>
+        </div>
+
+        {{ content }}
+
+    </div>
+    <!-- Add a script to make headers click + linkable! -->
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.5/dist/medium-zoom.min.js"></script>
+    <script>
+      mediumZoom('.post-content img')
+    </script>
+
+    <script type="text/javascript">
+      var headings = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]");
+
+      for (var i = 0; i < headings.length; i++) {
+          headings[i].innerHTML =
+              '<a href="#' + headings[i].id + '">' +
+                  headings[i].innerText +
+              '</a>';
+      }
+
+      if (history.scrollRestoration) {
+        window.history.scrollRestoration = 'auto';
+      }
+
+      let scrollMapper = {}
+
+      let onClickHandler = function(x) {
+          scrollMapper[location.href] = getScroll();
+          gotoURL(x.target.href, true, [0, 0]);
+          x.preventDefault();
+          return false;
+        };
+
+      let attachClickHandler = function(dom) {
+        for (el of dom.querySelectorAll('a')) {
+          if (el.hostname === window.location.hostname)
+          {
+            el.onclick = onClickHandler;
+          }
+        }
+
+        if (document.cookie.replace(/(?:(?:^|.*;\s*)darkmode\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true") {
+          document.documentElement.classList.add('dark');
+          dom.querySelector("#darkmode_button").checked = true;
+        }
+        else {
+          dom.querySelector("#darkmode_button").checked = false;
+        }
+
+        dom.querySelector("#darkmode_button").onclick = (x) => {
+          // if (dom.classList.contains('dark')) {
+          if (dom.querySelector("#darkmode_button").checked == false) {
+            document.cookie = "darkmode=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.documentElement.classList.remove('dark');
+          }
+          else {
+            document.documentElement.classList.add('dark');
+            document.cookie = "darkmode=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+          }
+        }
+
+      }
+
+      let getScroll = function() {
+        if (window.pageYOffset != undefined) {
+            return [pageXOffset, pageYOffset];
+        } else {
+            var sx, sy, d = document,
+                r = d.documentElement,
+                b = d.body;
+            sx = r.scrollLeft || b.scrollLeft || 0;
+            sy = r.scrollTop || b.scrollTop || 0;
+            return [sx, sy];
+        }
+      }
+
+      let gotoURL = (url, recordHistory, scrollTo) => {
+        fetch(url).then((response) => {
+          response.text().then((text) => {
+            let parser = new DOMParser();
+            let htmlDoc = parser.parseFromString(text, 'text/html');
+            document.body = htmlDoc.body;
+
+            // if (!!window.webkitURL) {
+              document.querySelectorAll('video').forEach((el) => {
+                  el.load();
+              });
+              document.querySelectorAll('audio').forEach((el) => {
+                  el.load();
+              });
+            // }
+
+            attachClickHandler(document.body);
+            if (recordHistory) {
+              window.history.pushState({prevURL: window.location.pathname, scrollState: getScroll()}, htmlDoc.title, response.url);
+            }
+            if (scrollMapper[location.href]) {
+              window.scrollTo(scrollMapper[location.href][0], scrollMapper[location.href][1]);
+            }
+            else {
+              window.scrollTo(0, 0);
+            }
+          })
+        });
+      }
+
+      window.addEventListener('beforeunload', (event) => {
+        console.log("UNLOADING: ", window.location.href);
+      })
+
+      window.addEventListener('popstate', (event) => {
+        gotoURL(event.target.location.href, false, event.state ? event.state.scrollState : null);
+      });
+
+      attachClickHandler(document.body);
+    </script>
+  </body>
+</html>
