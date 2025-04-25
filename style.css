@@ -1,0 +1,62 @@
+/* style.css
+  
+   Copyright 2025 Jagat Kafle
+ */
+ 
+body {
+	background-color: #353839;
+	color: #ffe6cc;
+	font-family: Inter, Helvetica, sans-serif;
+	margin: 2em 20em 2em 20em;
+}
+
+.title {
+	text-align: center;
+	font-size: 2em;
+	padding: 1em 1em 1em 1em;
+}
+
+.navigate a, a:link, a:focus {
+	font-size: 1.2em;
+	padding: 0 1em 0 1em;
+	color: #ff9913;
+	text-decoration: none;
+}
+
+.about, .notes{
+	padding: 2em 3em 1em 3em;
+}
+
+.cv {
+	padding: 2em 1em 1em 1em;
+	text-decoration: underline;
+	font-size: 1.1em;
+}
+
+ul {
+	list-style-type: trad-chinese-informal;
+}
+
+.about li a {
+	color: #e6e6fa;
+	font-size: 1em;
+}
+
+.notes li a {
+	color: #e6e6fa;
+	font-size: 1em;
+}
+
+div #pub {
+	text-decoration: underline;
+	font-size: 1.1em;
+	padding: 1em 0 0 0;
+}
+
+#paper {
+	padding: 0;
+}
+
+cite{
+	font-style: italic;
+}
