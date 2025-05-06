@@ -4,8 +4,8 @@
  */
  
 body {
-	background-color: #ffe6cc;
-	color: #353839;
+	background-color: #353839;
+	color: #ffe6dd;
 	font-family: Inter, Helvetica, sans-serif;
 	margin: 2em 20em 2em 20em;
 }
@@ -19,7 +19,7 @@ body {
 .navigate a, a:link, a:focus {
 	font-size: 1.2em;
 	padding: 0 1em 0 1em;
-	color: #3538cc;
+	color: #ff9913;
 	text-decoration: none;
 }
 
@@ -38,12 +38,12 @@ ul {
 }
 
 .about li a {
-	color: #3538cc;
+	color: #e6e6fa;
 	font-size: 1em;
 }
 
 .notes li a {
-	color: #3538cc;
+	color: #e6e6fa;
 	font-size: 1em;
 }
 
